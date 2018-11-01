@@ -5,8 +5,10 @@ import java.util.Optional;
 import java.sql.Date;
 import com.apap.tutorial7.model.FlightModel;
 import com.apap.tutorial7.model.PilotModel;
+import com.apap.tutorial7.rest.Setting;
 import com.apap.tutorial7.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * FlightController
@@ -81,32 +84,4 @@ public class FlightController {
 		flightService.deleteFlight(flight);
 		return "flight has been deleted";
 	}
-	
-//    @RequestMapping(value = "/flight/add/{licenseNumber}", method = RequestMethod.GET)
-//    private String add(@PathVariable(value = "licenseNumber") String licenseNumber, Model model) {
-//        PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber).get();
-//        pilot.setListFlight(new ArrayList<FlightModel>(){
-//            private ArrayList<FlightModel> init(){
-//                this.add(new FlightModel());
-//                return this;
-//            }
-//        }.init());
-//
-//        model.addAttribute("pilot", pilot);
-//        return "add-flight";
-//    }
-//
-//    @RequestMapping(value = "/flight/add/{licenseNumber}", method = RequestMethod.POST, params={"save"})
-//    private String addFlightSubmit(@ModelAttribute PilotModel pilot) {
-//        PilotModel archive = pilotService.getPilotDetailByLicenseNumber(pilot.getLicenseNumber()).get();
-//        for (FlightModel flight : pilot.getListFlight()) {
-//            if (flight != null) {
-//                flight.setPilot(archive);
-//                flightService.addFlight(flight);
-//            }
-//        }
-//        return "add";
-//    }
-//
-//
 }
