@@ -82,7 +82,7 @@ public class PilotController {
     	return detail;
     }
 	    
-    @GetMapping(value = "/airport/{term}/{country}")
+    @GetMapping(value = "/airport/{kota}")
 	public String getAirport(@PathVariable("kota") String kota) throws Exception {
 	String path = Setting.airportUrl + "&term=" + kota + "&country=ID&all_airports=true";
 	return restTemplate.getForEntity(path, String.class).getBody();
